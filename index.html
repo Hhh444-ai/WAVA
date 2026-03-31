@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedShop | บริการขายไอดีเกมอันดับ 1</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="top"><i class="fas fa-circle" style="font-size: 10px; color: #ff4757;"></i> WA VA บริการขายไอดีเกมggez</div>
+
+    <header>
+        <div class="icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="logo">WA VA<span>SHOP</span></div>
+        <div class="icon"><i class="fas fa-search"></i></div>
+    </header>
+
+    <div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar" id="menu">
+        <div class="sidebar-header">
+            <h2>เมนูหลัก</h2>
+            <i class="fas fa-times" onclick="toggleMenu()" style="cursor: pointer; color: white;"></i>
+        </div>
+        <button onclick="scrollToSection('home')"><i class="fas fa-home"></i> หน้าแรก</button>
+        <button onclick="scrollToSection('product-section')"><i class="fas fa-box-open"></i> สินค้า</button>
+        <button onclick="openAuth('login')"><i class="fas fa-wallet"></i> เติมเงิน</button>
+        <button onclick="scrollToSection('contact-section')"><i class="fas fa-headset"></i> ติดต่อ</button>
+    </div>
+
+    <main id="home">
+
+        <div class="quick-menu">
+            <div class="menu-item"><i class="fas fa-gift"></i><br>กิจกรรม</div>
+            <div class="menu-item"><i class="fas fa-users"></i><br>กลุ่ม</div>
+            <div class="menu-item"><i class="fab fa-tiktok"></i><br>TikTok</div>
+            <div class="menu-item" onclick="scrollToSection('contact-section')"><i class="fas fa-phone-alt"></i><br>ติดต่อ</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <i class="fas fa-user-friends stat-icon"></i>
+                <p>ผู้ใช้ทั้งหมด</p>
+                <h2 id="user">0</h2>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-shopping-cart stat-icon"></i>
+                <p>สินค้า</p>
+                <h2 id="product">0</h2>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-box stat-icon"></i>
+                <p>สต๊อก</p>
+                <h2 id="stock">0</h2>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle stat-icon"></i>
+                <p>ขายแล้ว</p>
+                <h2 id="sold">0</h2>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="product-section"><i class="fas fa-fire"></i> สินค้าขายดี</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="badge">ขายดี</div>
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=400&q=80" alt="Product">
+                <h3>ไก่เซ็ต Madara</h3>
+                <p class="price"><i class="fas fa-coins"></i> 79 เครดิต</p>
+                <button onclick="buyProduct('ไก่เซ็ต Madara', 79)"><i class="fas fa-shopping-basket"></i> ซื้อสินค้า</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80" alt="Product">
+                <h3>ไก่เซ็ต Oden</h3>
+                <p class="price"><i class="fas fa-coins"></i> 99 เครดิต</p>
+                <button onclick="buyProduct('ไก่เซ็ต Oden', 99)"><i class="fas fa-shopping-basket"></i> ซื้อสินค้า</button>
+            </div>
+        </div>
+
+        <div class="auth-buttons" id="authSection" style="margin-bottom: 50px;">
+            <button class="btn login" onclick="openAuth('login')"><i class="fas fa-sign-in-alt"></i> เข้าสู่ระบบ</button>
+            <button class="btn register" onclick="openAuth('register')"><i class="fas fa-user-plus"></i> สมัครสมาชิก</button>
+        </div>
+
+        <div id="contact-section" style="padding: 20px; background: var(--card-bg); border-radius: 15px; text-align: center; border: 1px solid #334155;">
+            <h3 style="color: var(--primary); margin-bottom: 10px;">ติดต่อเรา</h3>
+            <p style="color: var(--text-muted);"> WA VA SHOP: บริการ 24 ชม.</p>
+        </div>
+    </main>
+
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-container">
+            <span class="close-auth" onclick="closeAuth()">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn" id="tab-login" onclick="switchTab('login')">เข้าสู่ระบบ</button>
+                <button class="tab-btn" id="tab-register" onclick="switchTab('register')">สมัครสมาชิก</button>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="l-user" placeholder="ชื่อผู้ใช้งาน" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="l-pass" placeholder="รหัสผ่าน" required>
+                </div>
+                <button type="submit" class="auth-submit">เข้าสู่ระบบ</button>
+                <p class="auth-footer">ยังไม่มีบัญชี? <a href="javascript:void(0)" onclick="switchTab('register')">สมัครสมาชิก</a></p>
+            </form>
+
+            <form id="registerForm" class="auth-form">
+                <div class="input-group">
+                    <i class="fas fa-user-plus"></i>
+                    <input type="text" id="r-user" placeholder="ชื่อผู้ใช้งาน (อังกฤษ)" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="r-email" placeholder="อีเมล" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="r-pass" placeholder="รหัสผ่าน" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-check-double"></i>
+                    <input type="password" id="r-confirm" placeholder="ยืนยันรหัสผ่าน" required>
+                </div>
+                <button type="submit" class="auth-submit register-style">สร้างบัญชีใหม่</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
